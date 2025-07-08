@@ -4,3 +4,12 @@
     { "src": "api/push.js", "use": "@vercel/node" }
   ]
 }
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/push.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "/index.html" }
+  ]
+}

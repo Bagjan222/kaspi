@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaspi Донаты</title>
+  <style>
+    body { background: #000; color: #fff; font-family: sans-serif; text-align: center; padding-top: 100px; }
+    #msg { font-size: 2rem; }
+  </style>
+</head>
+<body>
+  <div id="msg">Ожидание донатов…</div>
+  <script>
+    const el = document.getElementById('msg');
+    function update() {
+      fetch('/api/push', { method: 'GET' })
+        .then(r => r.json())
+        .then(data => {
+          if (data.received) el.textContent = data.received;
+        }).catch(console.error);
+    }
+    setInterval(update, 2000);
+  </script>
+</body>
+</html>
